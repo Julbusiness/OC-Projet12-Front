@@ -2,9 +2,9 @@
   background: #020203;
   width: 100%;
   max-width: 1440px;
-  /* position: fixed;
+  position: fixed;
   top: 0;
-  z-index: 9999; */
+  z-index: 9999;
 }
 .nav-container {
   width: 100%;
