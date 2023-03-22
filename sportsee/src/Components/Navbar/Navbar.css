@@ -23,13 +23,13 @@
 .logo-header {
   width: 57px;
   height: 57px;
-  background: #E60000;
+  background: #ff0101;
   border-radius: 50%;
   margin-right: 10px;
 }
 
 .logo-name {
-  color: #E60000;
+  color: #ff0101;
   font-size: 25px;
   font-weight: 400;
 }
@@ -49,6 +49,11 @@
   cursor: pointer;
   font-size: 24px;
   text-decoration: none;
+}
+
+.active {
+  color: #ff0101;
+  cursor: pointer;
 }
 
 
