@@ -1,22 +1,13 @@
-import { useState, useEffect } from "react";
+import axios from "axios";
 
-function Api() {
-  const [data, setData] = useState([]);
+const API_URL = "http://localhost:3000/user/18";
 
-	useEffect(() => {
-		fetch(`http://localhost:3000/user/18`)
-			.then((response) => {
-				console.log(response);
-				return response.json();
-			})
-			.then((data) => {
-				console.log(data);
-				return setData(data);
-			});
-	}, []);
-  return (
-    data
-  )
+export async function getApi() {
+	try {
+      const { data } = await axios.get(API_URL)
+      console.log(data)
+      return data
+	} catch (error) {
+	  	console.log(error);
+	}
 }
-
-export default Api
