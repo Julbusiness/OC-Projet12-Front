@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { getApi } from "../../Components/Api/Api";
+import { getApiActivity } from "../../Components/Api/Api";
 import "./Profil.css";
 import calories from "../../Assets/calories-icon.png";
 import proteines from "../../Assets/protein-icon.png";
@@ -8,19 +10,32 @@ import lipides from "../../Assets/fat-icon.png";
 
 export default function Profil() {
 	const [data, setData] = useState([]);
+	const [dataActivity, setDataActivity] = useState([])
+	const { userId } = useParams();
+	// console.log(userId);
 
 	useEffect(() => {
 		async function getApiLoad() {
-			const data = await getApi();
+			const data = await getApi(userId);
 			setData(data);
 		}
 		getApiLoad();
-	}, []);
+	}, [userId]);
+
+	useEffect(() => {
+		async function getApiActivityLoad() {
+			const dataActivity = await getApiActivity(userId);
+			setDataActivity(dataActivity);
+		}
+		getApiActivityLoad();
+	}, [userId]);
 
 	const element = data.data;
+	const elementActivity = dataActivity.data
+	console.log(elementActivity)
 
 	return (
-		element && (
+		element && elementActivity &&(
 			<div className="container">
 				<div className="user-info">
 					<h1>
@@ -32,7 +47,9 @@ export default function Profil() {
 					Félicitation ! Vous avez explosé vos objectifs hier 👏
 				</p>
 				<div className="grid-container">
-					<div className="div1">First</div>
+					<div className="graph-bar">
+						<div>{elementActivity.sessions[0].kilogram}</div>
+					</div>
 					<div className="calories">
 						<img src={calories} alt="" className="icon" />
 						<div className="container-info">
@@ -61,9 +78,9 @@ export default function Profil() {
 							<p className="calFix">Lipides</p>
 						</div>
 					</div>
-					<div className="div6">sixth</div>
-					<div className="div7">seventh</div>
-					<div className="div8">height</div>
+					<div className="graph-line">graph-line</div>
+					<div className="graph-multi">graph-multi</div>
+					<div className="graph-circle">graph-circle</div>
 				</div>
 			</div>
 		)

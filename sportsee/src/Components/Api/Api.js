@@ -1,8 +1,22 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/user/18";
+export async function getApi(userId) {
 
-export async function getApi() {
+	const API_URL = `http://localhost:3000/user/${userId}`;
+
+	try {
+      const { data } = await axios.get(API_URL)
+      console.log(data)
+      return data
+	} catch (error) {
+	  	console.log(error);
+	}
+}
+
+export async function getApiActivity(userId) {
+
+	const API_URL = `http://localhost:3000/user/${userId}/activity`;
+
 	try {
       const { data } = await axios.get(API_URL)
       console.log(data)

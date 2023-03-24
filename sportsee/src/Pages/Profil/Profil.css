@@ -2,8 +2,8 @@
 	position: absolute;
 	top: 12%;
 	left: 15%;
-	width: 1126px;
-	height: 779px;
+	width: 78%;
+	height: 76%;
 }
 
 .user-info h1,
@@ -63,7 +63,7 @@
 	color: #74798c;
 }
 
-.div1 {
+.graph-bar {
 	grid-area: 1 / 1 / 3 / 4;
 }
 
@@ -74,6 +74,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0 20px;
 }
 
 .calories {
@@ -89,12 +90,12 @@
 .lipides {
 	grid-area: 4 / 4 / 5 / 5;
 }
-.div6 {
+.graph-line {
 	grid-area: 3 / 1 / 5 / 2;
 }
-.div7 {
+.graph-multi {
 	grid-area: 3 / 2 / 5 / 3;
 }
-.div8 {
+.graph-circle {
 	grid-area: 3 / 3 / 5 / 4;
 }
