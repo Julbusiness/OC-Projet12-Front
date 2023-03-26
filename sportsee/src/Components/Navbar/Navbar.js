@@ -1,11 +1,8 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../Assets/logo.png";
 
 export default function Navbar() {
-
-
 	return (
 		<header className="header">
 			<nav className="nav-container">
@@ -17,7 +14,7 @@ export default function Navbar() {
 					<NavLink to="/" className="items">
 						Accueil
 					</NavLink>
-					<NavLink to="/user/:id" className="items">
+					<NavLink to="/user/" className="items">
 						Profil
 					</NavLink>
 					<NavLink to="/setting" className="items">

@@ -1,6 +1,6 @@
 .sidebar {
-  background: #E60000;
-  position: absolute;
+  background: #ff0000;
+  position: fixed;
   left: 0;
   display: flex;
   flex-direction: column;
