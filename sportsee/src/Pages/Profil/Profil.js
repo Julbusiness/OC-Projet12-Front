@@ -81,6 +81,7 @@ export default function Profil() {
 								<GraphRadar data={elementPerformance} />
 							</div>
 							<div className="graph-circle">
+								<p className="title-pie">Score</p>
 								<GraphPie data={element} />
 							</div>
 						</div>

@@ -14,8 +14,14 @@ export default function GraphBar(data) {
 	const dataGraphBar = [];
 
 	for (const el of dataGraph) {
+		// console.log(el)
+
+		const date = new Date(el.day)
+		const day = date.getDate()
+		// console.log(day)
+
 		dataGraphBar.push({
-			name: `${dataGraph.indexOf(el) + 1}`,
+			name: day,
 			poids: `${el.kilogram}`,
 			calories: `${el.calories}`,
 		});
@@ -41,6 +47,12 @@ export default function GraphBar(data) {
 	const axisLine = {
 		background: "red",
 	};
+
+	const cursor = {
+		fill: "rgba(196, 196, 196, 0.5)", 
+		width: 56
+		//!contenu a centrer
+	}
 
 	return (
 		<ResponsiveContainer width="100%" height="75%">
@@ -90,7 +102,7 @@ export default function GraphBar(data) {
 				/>
 				<Tooltip
 					content={CustomTooltip}
-					cursor={{ fill: "#c4c4c4" }}
+					cursor={cursor}
 					offset={40}
 				/>
 				<Bar
