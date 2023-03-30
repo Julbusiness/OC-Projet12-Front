@@ -5,26 +5,26 @@ import {
 	PolarAngleAxis,
 	Radar,
 	PolarRadiusAxis,
-  ResponsiveContainer
+	ResponsiveContainer,
 } from "recharts";
 
 export default function GraphRadar(data) {
-	// console.log(data.data.data);
 	const dataGraph = data.data.data;
+	const dataGraphReverse = dataGraph.reverse();
 	const kind = data.data.kind;
 	const dataGraphBar = [];
 
-	dataGraph.forEach((element, index) => {
-		let activities = Object.values(kind);
+	dataGraphReverse.forEach((element, index) => {
+		let activities = Object.values(kind).reverse();
 		dataGraphBar.push({
 			subject: activities[index++],
 			perf: element.value,
-			fullMark: 150,
 		});
 	});
 
 	//? console.log
 	// console.log(dataGraph)
+	// console.log(dataGraphReverse)
 	// console.log(dataGraphBar)
 
 	return (
@@ -32,7 +32,7 @@ export default function GraphRadar(data) {
 			<RadarChart
 				outerRadius={90} // taille du graph
 				data={dataGraphBar}
-				innerRadius={12}
+				innerRadius={10}
 			>
 				<PolarGrid stroke="white" radialLines={false} />
 				<PolarAngleAxis
@@ -41,7 +41,8 @@ export default function GraphRadar(data) {
 					fontSize="12"
 					tickLine={false} // pour enelever les petit trait (tick)
 					axisLine={false} // enleve la couleur du polygon exterieur
-          dy={3}
+					dy={3} // decale les kind vers le haut ou le bas par rapport au graph
+					dx={-2} // decale les kind vers la gauche ou la droite par rapport au graph
 				/>
 				<PolarRadiusAxis
 					axisLine={false} // enleve l'axe avec les chiffres

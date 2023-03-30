@@ -6,7 +6,7 @@ export async function getApi(userId) {
 
 	try {
       const { data } = await axios.get(API_URL)
-      console.log(data)
+      // console.log(data)
       return data
 	} catch (error) {
 	  	console.log(error);
@@ -19,7 +19,7 @@ export async function getApiActivity(userId) {
 
 	try {
       const { data } = await axios.get(API_URL)
-      console.log(data)
+      // console.log(data)
       return data
 	} catch (error) {
 	  	console.log(error);
@@ -33,6 +33,19 @@ export async function getApiPerformance(userId) {
 	try {
       const { data } = await axios.get(API_URL)
       console.log(data)
+      return data
+	} catch (error) {
+	  	console.log(error);
+	}
+}
+
+export async function getApiAverageSessions(userId) {
+
+	const API_URL = `http://localhost:3000/user/${userId}/average-sessions`;
+
+	try {
+      const { data } = await axios.get(API_URL)
+      // console.log(data)
       return data
 	} catch (error) {
 	  	console.log(error);

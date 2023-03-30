@@ -15,11 +15,7 @@ function App() {
 			<Sidebar />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/user/:userId" element={<Profil />}>
-					<Route path="activity" element={<Profil />} />
-					<Route path="average-sessions" element={<Profil />} />
-					<Route path="performance" element={<Profil />} />
-				</Route>
+				<Route path="/user/:userId" element={<Profil />}/>
 				<Route path="/setting" element={<Setting />} />
 				<Route path="/community" element={<Community />} />
 				<Route path="*" element={<NotFound />} />

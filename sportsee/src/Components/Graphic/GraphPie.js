@@ -11,15 +11,13 @@ export default function GraphPie(data) {
 		},
 	];
 
-  console.log(dataGraph);
-
 	const CustomLabel = ({ viewBox, labelText, value }) => {
 		const { cx, cy } = viewBox;
 		return (
 			<g>
 				<text
 					x={cx}
-					y={cy - 20}
+					y={cy - 10}
 					className="recharts-text recharts-label"
 					textAnchor="middle"
 					dominantBaseline="central"
@@ -32,7 +30,7 @@ export default function GraphPie(data) {
 				</text>
 				<text
 					x={cx}
-					y={cy + 10}
+					y={cy + 15}
 					className="recharts-text recharts-label"
 					textAnchor="middle"
 					dominantBaseline="central"
@@ -47,7 +45,7 @@ export default function GraphPie(data) {
 	};
 
 	return (
-		<ResponsiveContainer width="100%" height="100%">
+		<ResponsiveContainer width="100%" height="100%" style={{}}>
 			<PieChart>
 				<Pie
 					data={dataGraph}
@@ -61,16 +59,12 @@ export default function GraphPie(data) {
 					outerRadius={91} // difference entre inner et outer donne l'epaisseur du cercle
 					startAngle={90}
 					endAngle={dataGraph[0].value * 360 / 100 + 90}
+					// endAngle={450}
 					paddingAngle={0}
-					// stroke=""
-					fill="#FF0000"
+					fill="#FF0000" // couleur de la ligne de graph (rouge)
 				>
 					<Label
-						content={<CustomLabel 
-            labelText="de votre objectif" 
-            value={(dataGraph[0].value)+"%"}
-            position="center"
-            />}
+						content={<CustomLabel labelText="de votre objectif" value={(dataGraph[0].value)+"%"} position="center"/>}
 					/>
 				</Pie>
 			</PieChart>

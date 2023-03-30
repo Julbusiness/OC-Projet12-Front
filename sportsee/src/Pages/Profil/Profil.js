@@ -3,9 +3,11 @@ import { useParams } from "react-router-dom";
 import { getApi } from "../../Components/Api/Api";
 import { getApiActivity } from "../../Components/Api/Api";
 import { getApiPerformance } from "../../Components/Api/Api";
-import GraphBar from "../../Components/Graphic/GraphBar/GraphBar";
-import GraphRadar from "../../Components/Graphic/GraphRadar/GraphRadar";
-import GraphPie from "../../Components/Graphic/GraphPie/GraphPie";
+import { getApiAverageSessions } from "../../Components/Api/Api";
+import GraphBar from "../../Components/Graphic/GraphBar";
+import GraphRadar from "../../Components/Graphic/GraphRadar";
+import GraphPie from "../../Components/Graphic/GraphPie";
+import GraphLine from "../../Components/Graphic/GraphLine";
 
 import "./Profil.css";
 import calories from "../../Assets/calories-icon.png";
@@ -17,6 +19,7 @@ export default function Profil() {
 	const [data, setData] = useState([]);
 	const [dataActivity, setDataActivity] = useState([]);
 	const [dataPerformance, setDataPerformance] = useState([]);
+	const [dataAverageSessions, setDataAverageSessions] = useState([]);
 	const { userId } = useParams();
 	// console.log(userId);
 
@@ -44,9 +47,18 @@ export default function Profil() {
 		getApiPerformanceLoad();
 	}, [userId]);
 
+	useEffect(() => {
+		async function getApiAverageSessionsLoad() {
+			const dataAverageSessions = await getApiAverageSessions(userId);
+			setDataAverageSessions(dataAverageSessions);
+		}
+		getApiAverageSessionsLoad();
+	}, [userId]);
+
 	const element = data.data;
 	const elementActivity = dataActivity.data;
 	const elementPerformance = dataPerformance.data;
+	const elementAverageSessions = dataAverageSessions.data;
 
 	return (
 		element &&
@@ -76,13 +88,18 @@ export default function Profil() {
 							<GraphBar data={elementActivity} />
 						</div>
 						<div className="other-graph">
-							<div className="graph-line">graph-line</div>
+							<div className="graph-line">
+								<p className="title-line">Durée moyenne des sessions</p>
+								<GraphLine data={elementAverageSessions} />
+							</div>
 							<div className="graph-multi">
 								<GraphRadar data={elementPerformance} />
 							</div>
 							<div className="graph-circle">
 								<p className="title-pie">Score</p>
-								<GraphPie data={element} />
+								<span className="pie">
+									<GraphPie data={element} />
+								</span>
 							</div>
 						</div>
 					</div>

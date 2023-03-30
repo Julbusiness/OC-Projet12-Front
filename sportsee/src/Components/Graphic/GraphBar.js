@@ -16,8 +16,8 @@ export default function GraphBar(data) {
 	for (const el of dataGraph) {
 		// console.log(el)
 
-		const date = new Date(el.day)
-		const day = date.getDate()
+		const date = new Date(el.day);
+		const day = date.getDate();
 		// console.log(day)
 
 		dataGraphBar.push({
@@ -36,7 +36,7 @@ export default function GraphBar(data) {
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
 			return (
-				<div className="custom-tooltip">
+				<div className="custom-tooltip-bar">
 					<p className="label">{`${payload[0].value}kg`}</p>
 					<p className="label">{`${payload[1].value}kCal`}</p>
 				</div>
@@ -44,23 +44,13 @@ export default function GraphBar(data) {
 		}
 	};
 
-	const axisLine = {
-		background: "red",
-	};
-
-	const cursor = {
-		fill: "rgba(196, 196, 196, 0.5)", 
-		width: 56
-		//!contenu a centrer
-	}
-
 	return (
 		<ResponsiveContainer width="100%" height="75%">
 			<BarChart
-				barSize={8}
-				barGap={8}
+				barSize={8} // width de la bar
+				barGap={8} // distance entre les divers bars
 				data={dataGraphBar}
-				barCategoryGap={25}
+				barCategoryGap={25} // distance entre les categories
 				margin={{ top: 50, right: 0, left: 20, bottom: 0 }}
 			>
 				<CartesianGrid
@@ -69,16 +59,13 @@ export default function GraphBar(data) {
 					stroke="#DEDEDE"
 				/>
 				<XAxis
-					// allowDataOverflow={true} // supprime ce qui dépasse du graph
 					dataKey="name"
 					tickLine={false}
 					tickCount={0}
-					axisLine={axisLine}
 					tick={{ fontSize: 14, fill: "#9B9EAC" }}
 					dy={10}
 					stroke="#DEDEDE" // couleur de la barre du bas
 					padding={{ left: -25, right: -25 }} // permet de reduire les 2 cotés visibles de la barre x
-					// tickMargin="10"
 				/>
 				<YAxis
 					yAxisId="poids"
@@ -102,8 +89,9 @@ export default function GraphBar(data) {
 				/>
 				<Tooltip
 					content={CustomTooltip}
-					cursor={cursor}
-					offset={40}
+					cursor={{ fill: "rgba(196, 196, 196, 0.5)", width: 65 }}
+					offset={40} // distance entre le pointeur et le content tooltip
+					wrapperStyle={{ outline: "none" }}
 				/>
 				<Bar
 					yAxisId="poids"

@@ -175,7 +175,7 @@
 	color: #74798c;
 }
 
-.custom-tooltip {
+.custom-tooltip-bar {
 	width: 39px;
 	height: 63px;
 	background: #ff0000;
@@ -194,9 +194,40 @@
 	position: relative;
 }
 
+.pie {
+	background: #000
+}
+
 .title-pie{
 	position: absolute;
 	top: 5px;
 	left: 10px;
 	font-size: 16px;
+}
+
+.graph-line {
+	position: relative;
+}
+.title-line {
+	position: absolute;
+	top: 15px;
+	left: 30px;
+	width: 148px;
+	text-align: left;
+	font-size: 15px;
+	line-height: 25px;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.custom-tooltip-line {
+	background-color: #ffffff;
+	color: #000000;
+	min-height: 25px;
+	max-height: 25px;
+	min-width: 40px;
+	max-width: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 8px;
 }
