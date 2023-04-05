@@ -8,6 +8,7 @@ import {
 	ResponsiveContainer,
 } from "recharts";
 import PropTypes from "prop-types"
+import { UsersRadar } from "../Model/Model";
 
 export default function GraphRadar(data) {
 
@@ -17,10 +18,12 @@ export default function GraphRadar(data) {
 	const dataGraphBar = [];
 
 	dataGraphReverse.forEach((element, index) => {
-		let activities = Object.values(kind).reverse();
+		let user = new UsersRadar(element)
+		console.log(user)
+		
 		dataGraphBar.push({
-			subject: activities[index++],
-			perf: element.value,
+			subject: Object.values(kind).reverse()[index++],
+			perf: user.value,
 		});
 	});
 

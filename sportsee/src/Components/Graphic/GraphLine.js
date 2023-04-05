@@ -8,18 +8,20 @@ import {
 	ResponsiveContainer,
 } from "recharts";
 import PropTypes from "prop-types"
+import { UsersLine } from "../Model/Model";
 
 export default function GraphLine(data) {
 	const dataGraph = data.data.sessions;
 	const dataGraphBar = [];
-	const days = ["L", "M", "M", "J", "V", "S", "D"];
-
+	
 	dataGraph.forEach((el, index) => {
-		// console.log(el);
+
+		let user = new UsersLine(el)
+		
 		dataGraphBar.push({
-			name: days[index++],
-			day: `${el.day}`,
-			sessionLength: `${el.sessionLength}`,
+			name: user.name[index++],
+			day: user.day,
+			sessionLength: user.sessionLength,
 		});
 	});
 
