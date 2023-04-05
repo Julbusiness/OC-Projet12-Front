@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function getApi(userId) {
 
-	const API_URL = `http://localhost:3000/user/${userId}`;
+	const API_URL = `http://localhost:3000/user/${userId}`; // faire une condition pour lui dire que si il n'y a pas d'api qu'il aille chercher le fichier apimock
 
 	try {
       const { data } = await axios.get(API_URL)
@@ -32,7 +32,7 @@ export async function getApiPerformance(userId) {
 
 	try {
       const { data } = await axios.get(API_URL)
-      console.log(data)
+      // console.log(data)
       return data
 	} catch (error) {
 	  	console.log(error);

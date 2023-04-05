@@ -9,7 +9,7 @@ import axios from "axios";
 export const getApiMock = async (userId) => {
 	try {
 		const dataMock = await axios.get(
-			`../../../public/data/data.json/user/${userId}`
+			`../../../public/data/data.json/user/${userId}` // modif a faire : supprimer la fin de la ligne apres json et lui demander d'aller chercher le truc a l'interieur + dans api.js
 		);
 		return dataMock.data;
 	} catch (error) {

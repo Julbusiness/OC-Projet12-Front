@@ -1,8 +1,8 @@
 import React from "react";
 import { PieChart, Pie, ResponsiveContainer, Label } from "recharts";
+import PropTypes from "prop-types"
 
 export default function GraphPie(data) {
-  // console.log(data.data.todayScore)
 
 	const dataGraph = [
 		{
@@ -44,6 +44,12 @@ export default function GraphPie(data) {
 		);
 	};
 
+	CustomLabel.propTypes = {
+		viewBox: PropTypes.object,
+		labelText: PropTypes.string.isRequired,
+		value: PropTypes.string.isRequired
+	}
+
 	return (
 		<ResponsiveContainer width="100%" height="100%" style={{}}>
 			<PieChart>
@@ -70,4 +76,8 @@ export default function GraphPie(data) {
 			</PieChart>
 		</ResponsiveContainer>
 	);
+}
+
+GraphPie.propTypes = {
+	data: PropTypes.object.isRequired
 }

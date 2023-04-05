@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import logo1 from "../../Assets/sidebar1.png";
 import logo2 from "../../Assets/sidebar2.png";
@@ -10,16 +11,24 @@ export default function Sidebar() {
 		<div className="sidebar">
 			<div className="logo-container">
 				<div className="bg-logo">
-					<img src={logo1} alt="" className="logo-side" />
+					<Link to="#" className="logo-container">
+						<img src={logo1} alt="" className="logo-side" />
+					</Link>
 				</div>
 				<div className="bg-logo">
-					<img src={logo2} alt="" className="logo-side" />
+					<Link to="#" className="logo-container">
+						<img src={logo2} alt="" className="logo-side" />
+					</Link>
 				</div>
 				<div className="bg-logo">
-					<img src={logo3} alt="" className="logo-side" />
+					<Link to="#" className="logo-container">
+						<img src={logo3} alt="" className="logo-side" />
+					</Link>
 				</div>
 				<div className="bg-logo">
-					<img src={logo4} alt="" className="logo-side" />
+					<Link to="#" className="logo-container">
+						<img src={logo4} alt="" className="logo-side" />
+					</Link>
 				</div>
 			</div>
 			<div className="copyright">&copy; Copyright SportSee 2020</div>

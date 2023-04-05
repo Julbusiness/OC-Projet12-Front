@@ -7,8 +7,10 @@ import {
 	PolarRadiusAxis,
 	ResponsiveContainer,
 } from "recharts";
+import PropTypes from "prop-types"
 
 export default function GraphRadar(data) {
+
 	const dataGraph = data.data.data;
 	const dataGraphReverse = dataGraph.reverse();
 	const kind = data.data.kind;
@@ -22,10 +24,10 @@ export default function GraphRadar(data) {
 		});
 	});
 
-	//? console.log
-	// console.log(dataGraph)
-	// console.log(dataGraphReverse)
-	// console.log(dataGraphBar)
+	dataGraphReverse.propTypes = {
+		element: PropTypes.object.isRequired,
+		index: PropTypes.number.isRequired,
+	}
 
 	return (
 		<ResponsiveContainer width="100%" height="100%">
@@ -56,4 +58,8 @@ export default function GraphRadar(data) {
 			</RadarChart>
 		</ResponsiveContainer>
 	);
+}
+
+GraphRadar.propTypes = {
+	data: PropTypes.object.isRequired
 }

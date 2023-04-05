@@ -8,30 +8,31 @@ import {
 	Bar,
 	ResponsiveContainer,
 } from "recharts";
+import PropTypes from "prop-types";
+import { GraphBarModel } from "../Model/Model";
 
+// exemple de js doc : faire /** et compléter
+/**
+ * graphbar donnes les elements du graph de en barre
+ * @param {object} data
+ * @returns JSX
+ */
 export default function GraphBar(data) {
 	const dataGraph = data.data.sessions;
 	const dataGraphBar = [];
 
 	for (const el of dataGraph) {
-		// console.log(el)
+		// console.log(el);
 
 		const date = new Date(el.day);
 		const day = date.getDate();
-		// console.log(day)
 
 		dataGraphBar.push({
 			name: day,
-			poids: `${el.kilogram}`,
-			calories: `${el.calories}`,
+			poids: el.kilogram,
+			calories: el.calories,
 		});
 	}
-
-	//? console.log
-	// console.log(dataGraph)
-	// console.log(dataGraphBar)
-
-	//? Style pour les graphs
 
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
@@ -42,6 +43,11 @@ export default function GraphBar(data) {
 				</div>
 			);
 		}
+	};
+
+	CustomTooltip.propTypes = {
+		active: PropTypes.bool.isRequired,
+		payload: PropTypes.arrayOf(PropTypes.object).isRequired,
 	};
 
 	return (
@@ -111,3 +117,7 @@ export default function GraphBar(data) {
 		</ResponsiveContainer>
 	);
 }
+
+GraphBar.propTypes = {
+	data: PropTypes.object.isRequired,
+};

@@ -7,6 +7,7 @@ import {
 	Tooltip,
 	ResponsiveContainer,
 } from "recharts";
+import PropTypes from "prop-types"
 
 export default function GraphLine(data) {
 	const dataGraph = data.data.sessions;
@@ -22,8 +23,6 @@ export default function GraphLine(data) {
 		});
 	});
 
-	// console.log(dataGraphBar)
-
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
 			return (
@@ -34,6 +33,11 @@ export default function GraphLine(data) {
 		}
 		return null;
 	};
+
+		CustomTooltip.propTypes ={
+		active: PropTypes.bool.isRequired,
+		payload: PropTypes.arrayOf(PropTypes.object).isRequired
+	}
 
 	return (
 		<ResponsiveContainer width="100%" height="100%">
@@ -83,4 +87,8 @@ export default function GraphLine(data) {
 			</LineChart>
 		</ResponsiveContainer>
 	);
+}
+
+GraphLine.propTypes = {
+	data: PropTypes.object.isRequired
 }
