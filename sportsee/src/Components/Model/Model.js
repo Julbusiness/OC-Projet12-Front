@@ -36,6 +36,6 @@ export class UsersRadar {
 	constructor(data) {
 		this.subject = data.kind;
 		this.value = data.value;
-		console.log(data);
+		// console.log(data);
 	}
 }
