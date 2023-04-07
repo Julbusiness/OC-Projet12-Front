@@ -1,16 +1,16 @@
 import React from "react";
 import { PieChart, Pie, ResponsiveContainer, Label } from "recharts";
 import PropTypes from "prop-types"
-import { UsersPie } from "../Model/Model";
+import { Model } from "../Model/Model";
 
 export default function GraphPie(data) {
 
-	let user = new UsersPie(data.data)
+		let userModel = new Model(data.data)
 
 	const dataGraph = [
 		{
-			name: user.name,
-			value: Math.round(user.value * 100),
+			name: userModel.GraphPieModel(data.data).name,
+			value: Math.round(userModel.GraphPieModel(data.data).value * 100),
 		},
 	];
 

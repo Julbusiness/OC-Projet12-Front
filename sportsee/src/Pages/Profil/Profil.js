@@ -62,7 +62,9 @@ export default function Profil() {
 
 	return (
 		element &&
-		elementActivity && (
+		elementActivity &&
+		elementPerformance &&
+		elementAverageSessions && (
 			<div className="container">
 				<div className="user-info">
 					<h1>

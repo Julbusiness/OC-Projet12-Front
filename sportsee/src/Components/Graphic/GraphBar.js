@@ -9,9 +9,9 @@ import {
 	ResponsiveContainer,
 } from "recharts";
 import PropTypes from "prop-types";
-import { UsersBar } from "../Model/Model";
+import { Model } from "../Model/Model";
 
-// exemple de js doc : faire /** et compléter
+//! exemple de js doc : faire /** et compléter
 /**
  * graphbar donnes les elements du graph de en barre
  * @param {object} data
@@ -23,17 +23,15 @@ export default function GraphBar(data) {
 
 	for (const el of dataGraph) {
 		
-		let user = new UsersBar(el)
-		// console.log(user)
+		let userModel = new Model(el)
 
-		const date = new Date(user.day);
+		const date = new Date(userModel.GraphBarModel(el).day);
 		const day = date.getDate();
-		// console.log(day)
 		
 		dataGraphBar.push({
 			name: day,
-			poids: user.weight,
-			calories: user.calories,
+			poids: userModel.GraphBarModel(el).weight,
+			calories: userModel.GraphBarModel(el).calories,
 		});
 	}
 

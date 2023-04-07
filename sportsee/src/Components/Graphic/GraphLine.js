@@ -8,7 +8,7 @@ import {
 	ResponsiveContainer,
 } from "recharts";
 import PropTypes from "prop-types"
-import { UsersLine } from "../Model/Model";
+import { Model } from "../Model/Model"
 
 export default function GraphLine(data) {
 	const dataGraph = data.data.sessions;
@@ -16,12 +16,12 @@ export default function GraphLine(data) {
 	
 	dataGraph.forEach((el, index) => {
 
-		let user = new UsersLine(el)
+		let userModel = new Model(el)
 		
 		dataGraphBar.push({
-			name: user.name[index++],
-			day: user.day,
-			sessionLength: user.sessionLength,
+			name: userModel.GraphLineModel(el).name[index++],
+			day: userModel.GraphLineModel(el).day,
+			sessionLength: userModel.GraphLineModel(el).sessionLength,
 		});
 	});
 
