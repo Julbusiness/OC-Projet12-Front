@@ -2,7 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './NotFound.css'
 
-
+/**
+ * Function that returns JSX (Error page)
+ * @returns JSX
+ */
 export default function Error() {
   return (
     <div className="container">

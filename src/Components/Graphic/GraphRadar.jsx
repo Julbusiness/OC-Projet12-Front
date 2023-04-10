@@ -10,6 +10,11 @@ import {
 import PropTypes from "prop-types";
 import { Model } from "../Model/Model";
 
+/**
+ * GraphRadar transmits the data elements to set up the Radar graph (user performance)
+ * @param {object} data
+ * @returns JSX
+ */
 export default function GraphRadar(data) {
 	const dataGraph = data.data.data;
 	const dataGraphReverse = dataGraph.reverse();

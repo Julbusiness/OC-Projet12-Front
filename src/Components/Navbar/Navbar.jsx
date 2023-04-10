@@ -2,6 +2,10 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../Assets/logo.png";
 
+/**
+ * Function that returns JSX (NavBar)
+ * @returns JSX
+ */
 export default function Navbar() {
 	return (
 		<header className="header">

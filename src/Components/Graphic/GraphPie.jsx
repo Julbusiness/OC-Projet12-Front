@@ -3,6 +3,11 @@ import { PieChart, Pie, ResponsiveContainer, Label } from "recharts";
 import PropTypes from "prop-types"
 import { Model } from "../Model/Model";
 
+/**
+ * GraphPie transmits the data elements to set up the Pie graph (user main-data)
+ * @param {object} data
+ * @returns JSX
+ */
 export default function GraphPie(data) {
 
 		let userModel = new Model(data.data)

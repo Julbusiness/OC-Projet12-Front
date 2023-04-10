@@ -11,9 +11,8 @@ import {
 import PropTypes from "prop-types";
 import { Model } from "../Model/Model";
 
-//! exemple de js doc : faire /** et compléter
 /**
- * graphbar donnes les elements du graph de en barre
+ * GraphBar transmits the data elements to set up the bar graph (user activity)
  * @param {object} data
  * @returns JSX
  */

@@ -6,6 +6,10 @@ import logo2 from "../../Assets/sidebar2.png";
 import logo3 from "../../Assets/sidebar3.png";
 import logo4 from "../../Assets/sidebar4.png";
 
+/**
+ * Function that returns JSX (SideBar)
+ * @returns JSX
+ */
 export default function Sidebar() {
 	return (
 		<div className="sidebar">

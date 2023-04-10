@@ -15,6 +15,10 @@ import proteines from "../../Assets/protein-icon.png";
 import glucides from "../../Assets/carbs-icon.png";
 import lipides from "../../Assets/fat-icon.png";
 
+/**
+ * Function that returns JSX (Profil page)
+ * @returns JSX
+ */
 export default function Profil() {
 	const [data, setData] = useState([]);
 	const [dataActivity, setDataActivity] = useState([]);

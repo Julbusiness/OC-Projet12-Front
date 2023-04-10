@@ -10,6 +10,11 @@ import {
 import PropTypes from "prop-types"
 import { Model } from "../Model/Model"
 
+/**
+ * GraphLine transmits the data elements to set up the Line graph (user average-sessions)
+ * @param {object} data
+ * @returns JSX
+ */
 export default function GraphLine(data) {
 	const dataGraph = data.data.sessions;
 	const dataGraphBar = [];
