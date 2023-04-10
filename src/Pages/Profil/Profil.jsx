@@ -60,6 +60,8 @@ export default function Profil() {
 	const elementPerformance = dataPerformance.data;
 	const elementAverageSessions = dataAverageSessions.data;
 
+	// console.log(element)
+
 	return (
 		element &&
 		elementActivity &&
