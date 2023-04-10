@@ -1,10 +1,19 @@
+/**
+ * data modeling class
+ * @property {object} data
+ */
 export class Model {
-
 	constructor(data) {
 		this.data = data;
 		// console.log(data)
 	}
 
+	/**
+	 * data activities
+	 * @property {string} day
+	 * @property {number} weight
+	 * @property {number} calories
+	 */
 	GraphBarModel(data) {
 		const day = data.day;
 		const weight = data.kilogram;
@@ -13,10 +22,16 @@ export class Model {
 		return {
 			day,
 			weight,
-			calories
-		}
+			calories,
+		};
 	}
 
+	/**
+	 * data average-sessions
+	 * @property {string} name
+	 * @property {number} day
+	 * @property {number} sessionLength
+	 */
 	GraphLineModel(data) {
 		const name = ["L", "M", "M", "J", "V", "S", "D"];
 		const day = data.day;
@@ -25,28 +40,37 @@ export class Model {
 		return {
 			name,
 			day,
-			sessionLength
-		}
+			sessionLength,
+		};
 	}
 
+	/**
+	 * main data
+	 * @property {string} name
+	 * @property {number} value
+	 */
 	GraphPieModel(data) {
-		const name = "score"
-		const value = data.score || data.todayScore
+		const name = "score";
+		const value = data.score || data.todayScore;
 
 		return {
 			name,
-			value
-		}
+			value,
+		};
 	}
 
+	/**
+	 * data average-sessions
+	 * @property {number} subject
+	 * @property {number} value
+	 */
 	GraphRadarModel(data) {
 		const subject = data.kind;
 		const value = data.value;
 
 		return {
 			subject,
-			value
-		}
+			value,
+		};
 	}
-
 }
