@@ -6,10 +6,10 @@ import axios from "axios";
  * @param {string} userId User id
  * @returns {object} Response
  */
-export const getApiMock = async (userId) => {
+export const getApi = async (userId) => {
 	try {
 		const dataMock = await axios.get(
-			`../../../public/data/data.json/user/${userId}`
+			`../../../public/data/data.json`
 		);
 		return dataMock.data;
 	} catch (error) {
@@ -23,7 +23,7 @@ export const getApiMock = async (userId) => {
  * @param {string} userId User id
  * @returns {object} Response
  */
-export const getApiMockActivity = async (userId) => {
+export const getApiActivity = async (userId) => {
 	try {
 		const dataMock = await axios.get(
 			`../../../public/data/data.json/user/${userId}/activity`
@@ -40,7 +40,7 @@ export const getApiMockActivity = async (userId) => {
  * @param {string} userId User id
  * @returns {object} Response
  */
-export const getApiMockPerformance = async (userId) => {
+export const getApiPerformance = async (userId) => {
 	try {
 		const dataMock = await axios.get(
 			`../../../public/data/data.json/user/${userId}/performance`
@@ -57,7 +57,7 @@ export const getApiMockPerformance = async (userId) => {
  * @param {string} userId User id
  * @returns {object} Response
  */
-export const getApiMockAverageSessions = async (userId) => {
+export const getApiAverageSessions = async (userId) => {
 	try {
 		const dataMock = await axios.get(
 			`../../../public/data/data.json/user/${userId}/average-sessions`

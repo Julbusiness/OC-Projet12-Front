@@ -1,9 +1,6 @@
 import axios from "axios";
 
-const ENV_DEV = import.meta.env.VITE_MOCKED_DATA
-// console.log(ENV_DEV)
-
-const ENV_PROD = import.meta.env.VITE_SERVER_DATA
+const ENV = import.meta.env.VITE_API
 // console.log(ENV_PROD)
 
 /**
@@ -12,7 +9,7 @@ const ENV_PROD = import.meta.env.VITE_SERVER_DATA
  * @returns {object}
  */
 export async function getApi(userId) {
-	const API_URL = `${ENV_PROD}/user/${userId}`; 
+	const API_URL = `${ENV}/user/${userId}`; 
 	try {
 		const { data } = await axios.get(API_URL);
 		// console.log(data)
@@ -28,7 +25,7 @@ export async function getApi(userId) {
  * @returns {object}
  */
 export async function getApiActivity(userId) {
-	const API_URL = `${ENV_PROD}/user/${userId}/activity`;
+	const API_URL = `${ENV}/user/${userId}/activity`;
 
 	try {
 		const { data } = await axios.get(API_URL);
@@ -45,7 +42,7 @@ export async function getApiActivity(userId) {
  * @returns {object}
  */
 export async function getApiPerformance(userId) {
-	const API_URL = `${ENV_PROD}/user/${userId}/performance`;
+	const API_URL = `${ENV}/user/${userId}/performance`;
 
 	try {
 		const { data } = await axios.get(API_URL);
@@ -62,7 +59,7 @@ export async function getApiPerformance(userId) {
  * @returns {object}
  */
 export async function getApiAverageSessions(userId) {
-	const API_URL = `${ENV_PROD}/user/${userId}/average-sessions`;
+	const API_URL = `${ENV}/user/${userId}/average-sessions`;
 
 	try {
 		const { data } = await axios.get(API_URL);
