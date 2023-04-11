@@ -1,12 +1,18 @@
 import axios from "axios";
 
 const ENV = import.meta.env.VITE_API
-// console.limport { getApi } from './ApiMock';
-// console.log(ENV) // result : http://localhost:3000
 
 export class Request{
-  constructor(URL){
-    this.URL = URL
+  constructor(url){
+    this.url = url
+  }
+  async currentURL(url){
+    try {
+      const { data } = await axios.get(url);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
@@ -15,47 +21,23 @@ export class Api {
     this.userId = userId;
   }
 
-  async getApi(userId) {
+  getApi(userId) {
     const API_URL = `${ENV}/user/${userId}`; 
-    try {
-      const { data } = await axios.get(API_URL);
-      // console.log(data) // result : object de data
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
+    return API_URL
   }
 
-  async getApiActivity(userId) {
+  getApiActivity(userId) {
     const API_URL = `${ENV}/user/${userId}/activity`;
-    try {
-      const { data } = await axios.get(API_URL);
-      // console.log(data) // result : object de data
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
+    return API_URL
   }
 
-  async getApiPerformance(userId) {
+  getApiPerformance(userId) {
     const API_URL = `${ENV}/user/${userId}/performance`;
-    try {
-      const { data } = await axios.get(API_URL);
-      // console.log(data) // result : object de data
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
+    return API_URL
   }
 
-  async getApiAverageSessions(userId) {
+  getApiAverageSessions(userId) {
     const API_URL = `${ENV}/user/${userId}/average-sessions`;
-    try {
-      const { data } = await axios.get(API_URL);
-      // console.log(data) // result : object de data
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
+    return API_URL
   }
 }

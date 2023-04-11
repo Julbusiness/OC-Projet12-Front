@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { Api } from "../../Components/Api/ModelApi"
+import { Request } from "../../Components/Api/ModelApi"
 
 import GraphBar from "../../Components/Graphic/GraphBar";
 import GraphRadar from "../../Components/Graphic/GraphRadar";
@@ -26,10 +27,11 @@ export default function Profil() {
 	const { userId } = useParams();
 
 	let user_api = new Api(userId);
+	let request = new Request(user_api.getApi(userId))
 
 	useEffect(() => {
 		async function getApiLoad() {
-			const data =  await user_api.getApi(userId);
+			const data =  await request.currentURL(user_api.getApi(userId));
 			setData(data);
 		}
 		getApiLoad();
@@ -37,7 +39,7 @@ export default function Profil() {
 
 	useEffect(() => {
 		async function getApiActivityLoad() {
-			const dataActivity = await user_api.getApiActivity(userId)
+			const dataActivity = await request.currentURL(user_api.getApiActivity(userId))
 			setDataActivity(dataActivity);
 		}
 		getApiActivityLoad();
@@ -45,7 +47,7 @@ export default function Profil() {
 
 	useEffect(() => {
 		async function getApiPerformanceLoad() {
-			const dataPerformance = await user_api.getApiPerformance(userId)
+			const dataPerformance = await request.currentURL(user_api.getApiPerformance(userId))
 			setDataPerformance(dataPerformance);
 		}
 		getApiPerformanceLoad();
@@ -53,7 +55,7 @@ export default function Profil() {
 
 	useEffect(() => {
 		async function getApiAverageSessionsLoad() {
-			const dataAverageSessions = await user_api.getApiAverageSessions(userId)
+			const dataAverageSessions = await request.currentURL(user_api.getApiAverageSessions(userId))
 			setDataAverageSessions(dataAverageSessions);
 		}
 		getApiAverageSessionsLoad();
