@@ -51,7 +51,7 @@ export class Model {
 	 */
 	GraphPieModel(data) {
 		const name = "score";
-		const value = data.score || data.todayScore;
+		const value = data.score || data.todayScore;	
 
 		return {
 			name,

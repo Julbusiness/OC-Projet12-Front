@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getApi } from "../../Components/Api/Api";
-import { getApiActivity } from "../../Components/Api/Api";
-import { getApiPerformance } from "../../Components/Api/Api";
-import { getApiAverageSessions } from "../../Components/Api/Api";
+
+import { Api } from "../../Components/Api/ModelApi"
+import { Request } from "../../Components/Api/ModelApi"
+
 import GraphBar from "../../Components/Graphic/GraphBar";
 import GraphRadar from "../../Components/Graphic/GraphRadar";
 import GraphPie from "../../Components/Graphic/GraphPie";
@@ -25,11 +25,13 @@ export default function Profil() {
 	const [dataPerformance, setDataPerformance] = useState([]);
 	const [dataAverageSessions, setDataAverageSessions] = useState([]);
 	const { userId } = useParams();
-	// console.log(userId);
+
+	let user_api = new Api(userId);
+	let request = new Request(user_api.getApi(userId))
 
 	useEffect(() => {
 		async function getApiLoad() {
-			const data = await getApi(userId);
+			const data =  await request.currentURL(user_api.getApi(userId));
 			setData(data);
 		}
 		getApiLoad();
@@ -37,7 +39,7 @@ export default function Profil() {
 
 	useEffect(() => {
 		async function getApiActivityLoad() {
-			const dataActivity = await getApiActivity(userId);
+			const dataActivity = await request.currentURL(user_api.getApiActivity(userId))
 			setDataActivity(dataActivity);
 		}
 		getApiActivityLoad();
@@ -45,7 +47,7 @@ export default function Profil() {
 
 	useEffect(() => {
 		async function getApiPerformanceLoad() {
-			const dataPerformance = await getApiPerformance(userId);
+			const dataPerformance = await request.currentURL(user_api.getApiPerformance(userId))
 			setDataPerformance(dataPerformance);
 		}
 		getApiPerformanceLoad();
@@ -53,7 +55,7 @@ export default function Profil() {
 
 	useEffect(() => {
 		async function getApiAverageSessionsLoad() {
-			const dataAverageSessions = await getApiAverageSessions(userId);
+			const dataAverageSessions = await request.currentURL(user_api.getApiAverageSessions(userId))
 			setDataAverageSessions(dataAverageSessions);
 		}
 		getApiAverageSessionsLoad();
@@ -63,8 +65,6 @@ export default function Profil() {
 	const elementActivity = dataActivity.data;
 	const elementPerformance = dataPerformance.data;
 	const elementAverageSessions = dataAverageSessions.data;
-
-	// console.log(element)
 
 	return (
 		element &&
