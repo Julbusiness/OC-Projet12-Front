@@ -1,71 +1,74 @@
 import axios from "axios";
 
-const ENV = import.meta.env.VITE_API
-// console.log(ENV_PROD)
+const ENV = import.meta.env.VITE_API;
 
 /**
- * getApi returns a data object
- * @param {number} userId 
- * @returns {object}
+ * data modeling class
+ * @params {string} URL
+ * @returns {object} data
  */
-export async function getApi(userId) {
-	const API_URL = `${ENV}/user/${userId}`; 
-	try {
-		const { data } = await axios.get(API_URL);
-		// console.log(data)
-		return data;
-	} catch (error) {
-		console.log(error);
+export class Request {
+	constructor(url) {
+		this.url = url;
+	}
+	async currentURL(url) {
+		try {
+			const { data } = await axios.get(url);
+      console.log(data);
+			return data;
+		} catch (error) {
+			console.log(error);
+		}
 	}
 }
 
 /**
- * getApiActivity returns a data object
- * @param {number} userId 
- * @returns {object}
+ * URL modeling class
+ * @param {number} userId
+ * @returns {string} URL
  */
-export async function getApiActivity(userId) {
-	const API_URL = `${ENV}/user/${userId}/activity`;
-
-	try {
-		const { data } = await axios.get(API_URL);
-		// console.log(data)
-		return data;
-	} catch (error) {
-		console.log(error);
+export class Api {
+	constructor(userId) {
+		this.userId = userId;
 	}
-}
 
-/**
- * getApiPerformance returns a data object
- * @param {number} userId 
- * @returns {object}
- */
-export async function getApiPerformance(userId) {
-	const API_URL = `${ENV}/user/${userId}/performance`;
-
-	try {
-		const { data } = await axios.get(API_URL);
-		// console.log(data)
-		return data;
-	} catch (error) {
-		console.log(error);
+	/**
+	 * getApi returns a data object
+	 * @param {number} userId
+	 * @returns {object}
+	 */
+	getApi(userId) {
+		const API_URL = `${ENV}/user/${userId}`;
+		return API_URL;
 	}
-}
 
-/**
- * getApiAverageSessions returns a data object
- * @param {number} userId 
- * @returns {object}
- */
-export async function getApiAverageSessions(userId) {
-	const API_URL = `${ENV}/user/${userId}/average-sessions`;
+	/**
+	 * getApiActivity returns a data object
+	 * @param {number} userId
+	 * @returns {object}
+	 */
+	getApiActivity(userId) {
+		const API_URL = `${ENV}/user/${userId}/activity`;
+		return API_URL;
+	}
 
-	try {
-		const { data } = await axios.get(API_URL);
-		// console.log(data)
-		return data;
-	} catch (error) {
-		console.log(error);
+	/**
+	 * getApiPerformance returns a data object
+	 * @param {number} userId
+	 * @returns {object}
+	 */
+	getApiPerformance(userId) {
+		const API_URL = `${ENV}/user/${userId}/performance`;
+		return API_URL;
+	}
+
+	/**
+	 * getApiAverageSessions returns a data object
+	 * @param {number} userId
+	 * @returns {object}
+	 */
+	getApiAverageSessions(userId) {
+		const API_URL = `${ENV}/user/${userId}/average-sessions`;
+		return API_URL;
 	}
 }

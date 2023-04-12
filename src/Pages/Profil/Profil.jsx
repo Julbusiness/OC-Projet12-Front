@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { Api } from "../../Components/Api/ModelApi"
-import { Request } from "../../Components/Api/ModelApi"
+import { Api } from "../../Components/Api/Api"
+import { Request } from "../../Components/Api/Api"
+// import { Api } from "../../Components/Api/ApiMock"
+// import { Request } from "../../Components/Api/ApiMock"
 
 import GraphBar from "../../Components/Graphic/GraphBar";
 import GraphRadar from "../../Components/Graphic/GraphRadar";
@@ -27,7 +29,7 @@ export default function Profil() {
 	const { userId } = useParams();
 
 	let user_api = new Api(userId);
-	let request = new Request(user_api.getApi(userId))
+	let request = new Request()
 
 	useEffect(() => {
 		async function getApiLoad() {
