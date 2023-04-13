@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { Api } from "../../Components/Api/Api"
-import { Request } from "../../Components/Api/Api"
-// import { Api } from "../../Components/Api/ApiMock"
-// import { Request } from "../../Components/Api/ApiMock"
+// import { Api } from "../../Components/Api/Api"
+// import { Request } from "../../Components/Api/Api"
+import { Api } from "../../Components/Api/ApiMock"
+import { Request } from "../../Components/Api/ApiMock"
 
 import GraphBar from "../../Components/Graphic/GraphBar";
 import GraphRadar from "../../Components/Graphic/GraphRadar";
@@ -33,7 +33,7 @@ export default function Profil() {
 
 	useEffect(() => {
 		async function getApiLoad() {
-			const data =  await request.currentURL(user_api.getApi(userId));
+			const data =  await request.currentURL(user_api.getApi(parseInt(userId)));
 			setData(data);
 		}
 		getApiLoad();
@@ -41,7 +41,7 @@ export default function Profil() {
 
 	useEffect(() => {
 		async function getApiActivityLoad() {
-			const dataActivity = await request.currentURL(user_api.getApiActivity(userId))
+			const dataActivity = await request.currentURL(user_api.getApiActivity(parseInt(userId)))
 			setDataActivity(dataActivity);
 		}
 		getApiActivityLoad();
@@ -49,7 +49,7 @@ export default function Profil() {
 
 	useEffect(() => {
 		async function getApiPerformanceLoad() {
-			const dataPerformance = await request.currentURL(user_api.getApiPerformance(userId))
+			const dataPerformance = await request.currentURL(user_api.getApiPerformance(parseInt(userId)))
 			setDataPerformance(dataPerformance);
 		}
 		getApiPerformanceLoad();
@@ -57,7 +57,7 @@ export default function Profil() {
 
 	useEffect(() => {
 		async function getApiAverageSessionsLoad() {
-			const dataAverageSessions = await request.currentURL(user_api.getApiAverageSessions(userId))
+			const dataAverageSessions = await request.currentURL(user_api.getApiAverageSessions(parseInt(userId)))
 			setDataAverageSessions(dataAverageSessions);
 		}
 		getApiAverageSessionsLoad();

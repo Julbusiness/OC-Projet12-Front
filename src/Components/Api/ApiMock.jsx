@@ -8,24 +8,33 @@ const ENV = import.meta.env.VITE_API;
  * @returns {object} data
  */
 export class Request {
-	constructor(url) {
-		this.url = url;
+	constructor() {
 	}
+
 	async currentURL(userId) {
+
 		try {
 			const { data } = await axios.get(ENV);
       console.log(data);
-			const currentData = data.data
-			const arrData = currentData.filter((obj) => {
-				const currentObj = (obj.id == userId)
-				return currentObj
-			})
-			console.log(arrData)
 
-			return arrData;
+			let currentArr = data.data
+			console.log(currentArr)
+
+			let newObj = {}
+
+			const arr = currentArr.filter((obj) => {
+				if(obj.id === userId || obj.userId === userId) {
+					newObj = obj
+					return newObj
+				}
+			})
+			console.log(newObj)
+			return arr;
+
 		} catch (error) {
 			console.log(error);
 		}
+
 	}
 }
 
@@ -44,7 +53,8 @@ export class Api {
 	 * @param {number} userId
 	 * @returns {object}
 	 */
-	async getApi(userId) {
+	getApi(userId) {
+		console.log('Je suis dans getApi')
 		return userId
 	}
 
@@ -54,8 +64,8 @@ export class Api {
 	 * @returns {object}
 	 */
 	getApiActivity(userId) {
-		const API_URL = `${ENV}/user/${userId}/activity`;
-		return API_URL;
+		console.log('Je suis dans getApiActivity')
+		return userId
 	}
 
 	/**
@@ -64,9 +74,8 @@ export class Api {
 	 * @returns {object}
 	 */
 	getApiPerformance(userId) {
-		const API_URL = `${ENV}/user/${userId}/performance`;
-		return API_URL;
-	}
+		console.log('Je suis dans getApiPerformance')
+		return userId	}
 
 	/**
 	 * getApiAverageSessions returns a data object
@@ -74,7 +83,6 @@ export class Api {
 	 * @returns {object}
 	 */
 	getApiAverageSessions(userId) {
-		const API_URL = `${ENV}/user/${userId}/average-sessions`;
-		return API_URL;
-	}
+		console.log('Je suis dans getApiaverage')
+		return userId	}
 }
