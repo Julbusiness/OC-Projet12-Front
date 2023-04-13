@@ -63,6 +63,11 @@ export default function Profil() {
 		getApiAverageSessionsLoad();
 	}, [userId]);
 
+	console.log(data)
+	console.log(dataActivity)
+	console.log(dataPerformance)
+	console.log(dataAverageSessions)
+
 	const element = data.data;
 	const elementActivity = dataActivity.data;
 	const elementPerformance = dataPerformance.data;

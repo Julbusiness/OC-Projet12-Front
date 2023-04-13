@@ -12,24 +12,23 @@ export class Request {
 	}
 
 	async currentURL(userId) {
+		console.log(userId)
 
 		try {
 			const { data } = await axios.get(ENV);
-      console.log(data);
 
-			let currentArr = data.data
+			let currentArr = data.data;
 			console.log(currentArr)
 
 			let newObj = {}
 
 			const arr = currentArr.filter((obj) => {
-				if(obj.id === userId || obj.userId === userId) {
+				if(obj.data.id === userId.userId || obj.data.userId === userId.userId) {
 					newObj = obj
 					return newObj
 				}
 			})
-			console.log(newObj)
-			return arr;
+			return newObj;
 
 		} catch (error) {
 			console.log(error);
@@ -55,7 +54,14 @@ export class Api {
 	 */
 	getApi(userId) {
 		console.log('Je suis dans getApi')
-		return userId
+
+		// let currentFolder = ("Je suis le second paramètre");
+		let currentFolder = "data";
+
+		return {
+			userId,
+			currentFolder,
+		}	
 	}
 
 	/**
@@ -65,7 +71,12 @@ export class Api {
 	 */
 	getApiActivity(userId) {
 		console.log('Je suis dans getApiActivity')
-		return userId
+		let currentFolder = ("Je suis le second paramètre");
+
+		return {
+			userId,
+			currentFolder,
+		}	
 	}
 
 	/**
@@ -75,7 +86,13 @@ export class Api {
 	 */
 	getApiPerformance(userId) {
 		console.log('Je suis dans getApiPerformance')
-		return userId	}
+		let currentFolder = ("Je suis le second paramètre");
+
+		return {
+			userId,
+			currentFolder,
+		}	
+	}
 
 	/**
 	 * getApiAverageSessions returns a data object
@@ -83,6 +100,12 @@ export class Api {
 	 * @returns {object}
 	 */
 	getApiAverageSessions(userId) {
-		console.log('Je suis dans getApiaverage')
-		return userId	}
+		console.log('Je suis dans getApiAverageSessions')
+		let currentFolder = ("Je suis le second paramètre");
+
+		return {
+			userId,
+			currentFolder,
+		}	
+	}
 }
