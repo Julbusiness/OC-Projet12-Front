@@ -8,32 +8,32 @@ const ENV = import.meta.env.VITE_API;
  * @returns {object} data
  */
 export class Request {
-	constructor() {
-	}
+	constructor() {}
 
 	async currentURL(userId) {
-		console.log(userId)
+		// console.log(userId)
 
 		try {
 			const { data } = await axios.get(ENV);
 
-			let currentArr = data.data;
-			console.log(currentArr)
+			let currentArr = data[userId.currentFolder];
+			// console.log(currentArr)
 
-			let newObj = {}
+			let newObj = {};
 
 			const arr = currentArr.filter((obj) => {
-				if(obj.data.id === userId.userId || obj.data.userId === userId.userId) {
-					newObj = obj
-					return newObj
+				if (
+					obj.data.id === userId.userId ||
+					obj.data.userId === userId.userId
+				) {
+					newObj = obj;
+					return newObj;
 				}
-			})
+			});
 			return newObj;
-
 		} catch (error) {
 			console.log(error);
 		}
-
 	}
 }
 
@@ -53,15 +53,11 @@ export class Api {
 	 * @returns {object}
 	 */
 	getApi(userId) {
-		console.log('Je suis dans getApi')
-
-		// let currentFolder = ("Je suis le second paramètre");
 		let currentFolder = "data";
-
 		return {
 			userId,
 			currentFolder,
-		}	
+		};
 	}
 
 	/**
@@ -70,13 +66,11 @@ export class Api {
 	 * @returns {object}
 	 */
 	getApiActivity(userId) {
-		console.log('Je suis dans getApiActivity')
-		let currentFolder = ("Je suis le second paramètre");
-
+		let currentFolder = "dataActivity";
 		return {
 			userId,
 			currentFolder,
-		}	
+		};
 	}
 
 	/**
@@ -85,13 +79,11 @@ export class Api {
 	 * @returns {object}
 	 */
 	getApiPerformance(userId) {
-		console.log('Je suis dans getApiPerformance')
-		let currentFolder = ("Je suis le second paramètre");
-
+		let currentFolder = "dataPerformance";
 		return {
 			userId,
 			currentFolder,
-		}	
+		};
 	}
 
 	/**
@@ -100,12 +92,10 @@ export class Api {
 	 * @returns {object}
 	 */
 	getApiAverageSessions(userId) {
-		console.log('Je suis dans getApiAverageSessions')
-		let currentFolder = ("Je suis le second paramètre");
-
+		let currentFolder = "dataAverageSessions";
 		return {
 			userId,
 			currentFolder,
-		}	
+		};
 	}
 }

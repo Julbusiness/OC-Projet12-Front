@@ -14,7 +14,7 @@ export class Request {
 	async currentURL(url) {
 		try {
 			const { data } = await axios.get(url);
-      console.log(data);
+      // console.log(data);
 			return data;
 		} catch (error) {
 			console.log(error);
