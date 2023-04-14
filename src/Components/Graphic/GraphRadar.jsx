@@ -23,7 +23,6 @@ export default function GraphRadar(data) {
 
 	dataGraphReverse.forEach((element, index) => {
 		let userModel = new Model(element);
-		// console.log(user)
 
 		dataGraphBar.push({
 			subject: Object.values(kind).reverse()[index++],
@@ -39,28 +38,28 @@ export default function GraphRadar(data) {
 	return (
 		<ResponsiveContainer width="100%" height="100%">
 			<RadarChart
-				outerRadius={90} // taille du graph
+				outerRadius={90}
 				data={dataGraphBar}
 				innerRadius={10}
 			>
 				<PolarGrid stroke="white" radialLines={false} />
 				<PolarAngleAxis
-					dataKey="subject" // clé : nom des elements
-					stroke="#ffffff" // couleur des elements (blanc)
+					dataKey="subject" 
+					stroke="#ffffff" 
 					fontSize="12"
-					tickLine={false} // pour enelever les petit trait (tick)
-					axisLine={false} // enleve la couleur du polygon exterieur
-					dy={3} // decale les kind vers le haut ou le bas par rapport au graph
-					dx={-2} // decale les kind vers la gauche ou la droite par rapport au graph
+					tickLine={false} 
+					axisLine={false} 
+					dy={3} 
+					dx={-2} 
 				/>
 				<PolarRadiusAxis
-					axisLine={false} // enleve l'axe avec les chiffres
-					tick={false} // enleve les chiffres de l'axe
+					axisLine={false} 
+					tick={false} 
 				/>
 				<Radar
-					dataKey="perf" // clé de la valeur principal
-					fill="#ff0101" // couleur du graph (rouge)
-					fillOpacity={0.6} // opacité
+					dataKey="perf" 
+					fill="#ff0101"
+					fillOpacity={0.6}
 				/>
 			</RadarChart>
 		</ResponsiveContainer>

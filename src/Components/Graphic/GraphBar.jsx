@@ -54,10 +54,10 @@ export default function GraphBar(data) {
 	return (
 		<ResponsiveContainer width="100%" height="75%">
 			<BarChart
-				barSize={8} // width de la bar
-				barGap={8} // distance entre les divers bars
+				barSize={8}
+				barGap={8}
 				data={dataGraphBar}
-				barCategoryGap={25} // distance entre les categories
+				barCategoryGap={25}
 				margin={{ top: 50, right: 0, left: 20, bottom: 0 }}
 			>
 				<CartesianGrid
@@ -71,8 +71,8 @@ export default function GraphBar(data) {
 					tickCount={0}
 					tick={{ fontSize: 14, fill: "#9B9EAC" }}
 					dy={10}
-					stroke="#DEDEDE" // couleur de la barre du bas
-					padding={{ left: -25, right: -25 }} // permet de reduire les 2 cotés visibles de la barre x
+					stroke="#DEDEDE"
+					padding={{ left: -25, right: -25 }}
 				/>
 				<YAxis
 					yAxisId="poids"
@@ -97,7 +97,7 @@ export default function GraphBar(data) {
 				<Tooltip
 					content={CustomTooltip}
 					cursor={{ fill: "rgba(196, 196, 196, 0.5)", width: 65 }}
-					offset={40} // distance entre le pointeur et le content tooltip
+					offset={40}
 					wrapperStyle={{ outline: "none" }}
 				/>
 				<Bar

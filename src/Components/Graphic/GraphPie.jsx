@@ -70,12 +70,12 @@ export default function GraphPie(data) {
 					label={false}
 					cornerRadius={50}
 					innerRadius={80}
-					outerRadius={91} // difference entre inner et outer donne l'epaisseur du cercle
+					outerRadius={91}
 					startAngle={90}
 					endAngle={dataGraph[0].value * 360 / 100 + 90}
 					// endAngle={450}
 					paddingAngle={0}
-					fill="#FF0000" // couleur de la ligne de graph (rouge)
+					fill="#FF0000"
 				>
 					<Label
 						content={<CustomLabel labelText="de votre objectif" value={(dataGraph[0].value)+"%"} position="center"/>}

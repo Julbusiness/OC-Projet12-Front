@@ -55,7 +55,7 @@ export default function GraphLine(data) {
 					right: 25,
 					left: 20,
 					bottom: 5,
-				}} // marge entre le bord du container et le debut du graph et de la legende
+				}}
 			>
 				<XAxis
 					dataKey="name"
@@ -65,22 +65,22 @@ export default function GraphLine(data) {
 				/>
 				<YAxis
 					dataKey="sessionLength"
-					hide={true} //montre l'échelle Y
+					hide={true}
 					type="number"
 					domain={[-10, "dataMax"]}
 				/>
 				<Tooltip
-					cursor={false} //! piste pour changer la couleur de la div cursor
+					cursor={false}
 					content={CustomTooltip}
-					offset={20} // distance entre le pointeur et le content tooltip
-					wrapperStyle={{ width: 25, height: 25, outline: "none" }} // taille de la bulle au mouseover + outline pour enlever la bordure verte autour de la bulle
+					offset={20}
+					wrapperStyle={{ width: 25, height: 25, outline: "none" }}
 				/>
 				<Line
 					type="natural"
 					dataKey="sessionLength"
-					dot={false} // enleve les points sur la ligne
+					dot={false}
 					strokeWidth={2}
-					stroke="url(#gradient)" // couleur de la ligne
+					stroke="url(#gradient)"
 				/>
 				<defs>
 					<linearGradient id="gradient">
