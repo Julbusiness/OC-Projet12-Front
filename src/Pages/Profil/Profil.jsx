@@ -37,36 +37,25 @@ export default function Profil() {
 			setData(data);
 		}
 		getApiLoad();
-	}, [userId]);
 
-	useEffect(() => {
 		async function getApiActivityLoad() {
 			const dataActivity = await request.currentURL(user_api.getApiActivity(parseInt(userId)))
 			setDataActivity(dataActivity);
 		}
 		getApiActivityLoad();
-	}, [userId]);
 
-	useEffect(() => {
 		async function getApiPerformanceLoad() {
 			const dataPerformance = await request.currentURL(user_api.getApiPerformance(parseInt(userId)))
 			setDataPerformance(dataPerformance);
 		}
 		getApiPerformanceLoad();
-	}, [userId]);
 
-	useEffect(() => {
 		async function getApiAverageSessionsLoad() {
 			const dataAverageSessions = await request.currentURL(user_api.getApiAverageSessions(parseInt(userId)))
 			setDataAverageSessions(dataAverageSessions);
 		}
 		getApiAverageSessionsLoad();
 	}, [userId]);
-
-	// console.log(data)
-	// console.log(dataActivity)
-	// console.log(dataPerformance)
-	// console.log(dataAverageSessions)
 
 	const element = data.data;
 	const elementActivity = dataActivity.data;

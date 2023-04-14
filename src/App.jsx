@@ -1,10 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import Sidebar from "./Components/Sidebar/Sidebar";
-import Home from "./Pages/Home/Home";
+import EmptyPage from "./Components/EmptyPage/EmptyPage";
 import Profil from "./Pages/Profil/Profil";
-import Setting from "./Pages/Setting/Setting";
-import Community from "./Pages/Community/Community";
 import NotFound from "./Pages/NotFound/NotFound";
 import "./App.css";
 
@@ -14,10 +12,10 @@ function App() {
 			<Navbar />
 			<Sidebar />
 			<Routes>
-				<Route path="/" element={<Home />} />
+				<Route path="/" element={<EmptyPage page="Accueil"/>} />
 				<Route path="/user/:userId" element={<Profil />}/>
-				<Route path="/setting" element={<Setting />} />
-				<Route path="/community" element={<Community />} />
+				<Route path="/setting" element={<EmptyPage page="Réglage"/>} />
+				<Route path="/community" element={<EmptyPage page="Communauté"/>} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</div>
