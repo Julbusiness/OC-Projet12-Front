@@ -9,10 +9,10 @@ if(ENV === 'http://localhost:3000'){
 	console.log(ENV + ' APIMOCK')
 }
 
-import { Api } from "../../Components/Api/Api"
-import { Request } from "../../Components/Api/Api"
-// import { Api } from "../../Components/Api/ApiMock";
-// import { Request } from "../../Components/Api/ApiMock";
+// import { Api } from "../../Components/Api/Api"
+// import { Request } from "../../Components/Api/Api"
+import { Api } from "../../Components/Api/ApiMock";
+import { Request } from "../../Components/Api/ApiMock";
 
 import GraphBar from "../../Components/Graphic/GraphBar";
 import GraphRadar from "../../Components/Graphic/GraphRadar";
