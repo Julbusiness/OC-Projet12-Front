@@ -22,7 +22,6 @@ import lipides from "../../Assets/fat-icon.png";
  * @returns JSX
  */
 export default function Profil() {
-	console.log("RENDER_PROFIL")
 	const [data, setData] = useState([]);
 	const [dataActivity, setDataActivity] = useState([]);
 	const [dataPerformance, setDataPerformance] = useState([]);
