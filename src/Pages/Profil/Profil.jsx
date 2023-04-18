@@ -63,15 +63,12 @@ export default function Profil() {
 	const elementAverageSessions = dataAverageSessions.data;
 
 	return (
-		element &&
-		elementActivity &&
-		elementPerformance &&
-		elementAverageSessions && (
+(
 			<div className="container">
 				<div className="user-info">
 					<h1>
 						<span className="bonjour">Bonjour</span>
-						<span className="user-name"> {element.userInfos.firstName}</span>
+						<span className="user-name"> {element && element.userInfos.firstName}</span>
 					</h1>
 					<p className="profil-text">
 						Félicitation ! Vous avez explosé vos objectifs hier 👏
@@ -89,20 +86,20 @@ export default function Profil() {
 									</li>
 								</ul>
 							</div>
-							<GraphBar data={elementActivity} />
+							{elementActivity && <GraphBar data={elementActivity} />}
 						</div>
 						<div className="other-graph">
 							<div className="graph-line">
 								<p className="title-line">Durée moyenne des sessions</p>
-								<GraphLine data={elementAverageSessions} />
+								{elementAverageSessions && <GraphLine data={elementAverageSessions} />}
 							</div>
 							<div className="graph-multi">
-								<GraphRadar data={elementPerformance} />
+								{elementPerformance && <GraphRadar data={elementPerformance} />}
 							</div>
 							<div className="graph-circle">
 								<p className="title-pie">Score</p>
 								<span className="pie">
-									<GraphPie data={element} />
+									{element && <GraphPie data={element} />}
 								</span>
 							</div>
 						</div>
@@ -111,28 +108,28 @@ export default function Profil() {
 						<div className="calories">
 							<img src={calories} alt="" className="icon" />
 							<div className="container-info">
-								<p className="calDyn">{element.keyData.calorieCount}kCal</p>
+								<p className="calDyn">{element && element.keyData.calorieCount}kCal</p>
 								<p className="calFix">Calories</p>
 							</div>
 						</div>
 						<div className="proteines">
 							<img src={proteines} alt="" className="icon" />
 							<div className="container-info">
-								<p className="calDyn">{element.keyData.proteinCount}g</p>
+								<p className="calDyn">{element && element.keyData.proteinCount}g</p>
 								<p className="calFix">Proteines</p>
 							</div>
 						</div>
 						<div className="glucides">
 							<img src={glucides} alt="" className="icon" />
 							<div className="container-info">
-								<p className="calDyn">{element.keyData.carbohydrateCount}g</p>
+								<p className="calDyn">{element && element.keyData.carbohydrateCount}g</p>
 								<p className="calFix">Glucides</p>
 							</div>
 						</div>
 						<div className="lipides">
 							<img src={lipides} alt="" className="icon" />
 							<div className="container-info">
-								<p className="calDyn">{element.keyData.lipidCount}g</p>
+								<p className="calDyn">{element && element.keyData.lipidCount}g</p>
 								<p className="calFix">Lipides</p>
 							</div>
 						</div>
