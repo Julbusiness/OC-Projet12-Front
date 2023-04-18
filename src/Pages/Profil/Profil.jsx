@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+const ENV = import.meta.env.VITE_API;
+
+if(ENV === 'http://localhost:3000'){
+	console.log(ENV + ' API')
+} else {
+	console.log(ENV + ' APIMOCK')
+}
+
 import { Api } from "../../Components/Api/Api"
 import { Request } from "../../Components/Api/Api"
 // import { Api } from "../../Components/Api/ApiMock";
