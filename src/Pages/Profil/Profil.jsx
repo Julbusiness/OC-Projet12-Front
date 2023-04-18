@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-// import { Api } from "../../Components/Api/Api"
-// import { Request } from "../../Components/Api/Api"
-import { Api } from "../../Components/Api/ApiMock"
-import { Request } from "../../Components/Api/ApiMock"
+import { Api } from "../../Components/Api/Api"
+import { Request } from "../../Components/Api/Api"
+// import { Api } from "../../Components/Api/ApiMock";
+// import { Request } from "../../Components/Api/ApiMock";
 
 import GraphBar from "../../Components/Graphic/GraphBar";
 import GraphRadar from "../../Components/Graphic/GraphRadar";
@@ -29,29 +29,35 @@ export default function Profil() {
 	const { userId } = useParams();
 
 	let user_api = new Api(userId);
-	let request = new Request()
+	let request = new Request();
 
 	useEffect(() => {
 		async function getApiLoad() {
-			const data =  await request.currentURL(user_api.getApi(parseInt(userId)));
+			const data = await request.currentURL(user_api.getApi(parseInt(userId)));
 			setData(data);
 		}
 		getApiLoad();
 
 		async function getApiActivityLoad() {
-			const dataActivity = await request.currentURL(user_api.getApiActivity(parseInt(userId)))
+			const dataActivity = await request.currentURL(
+				user_api.getApiActivity(parseInt(userId))
+			);
 			setDataActivity(dataActivity);
 		}
 		getApiActivityLoad();
 
 		async function getApiPerformanceLoad() {
-			const dataPerformance = await request.currentURL(user_api.getApiPerformance(parseInt(userId)))
+			const dataPerformance = await request.currentURL(
+				user_api.getApiPerformance(parseInt(userId))
+			);
 			setDataPerformance(dataPerformance);
 		}
 		getApiPerformanceLoad();
 
 		async function getApiAverageSessionsLoad() {
-			const dataAverageSessions = await request.currentURL(user_api.getApiAverageSessions(parseInt(userId)))
+			const dataAverageSessions = await request.currentURL(
+				user_api.getApiAverageSessions(parseInt(userId))
+			);
 			setDataAverageSessions(dataAverageSessions);
 		}
 		getApiAverageSessionsLoad();
@@ -63,79 +69,89 @@ export default function Profil() {
 	const elementAverageSessions = dataAverageSessions.data;
 
 	return (
-(
-			<div className="container">
-				<div className="user-info">
-					<h1>
-						<span className="bonjour">Bonjour</span>
-						<span className="user-name"> {element && element.userInfos.firstName}</span>
-					</h1>
-					<p className="profil-text">
-						Félicitation ! Vous avez explosé vos objectifs hier 👏
-					</p>
-				</div>
-				<div className="grid-container">
-					<div className="graph-bar-other">
-						<div className="graph-bar-container">
-							<div className="txt-graph">
-								<p className="title-graph-bar">Activité quotidienne</p>
-								<ul className="title-graph-container">
-									<li className="title-point-graph kg">Poids (kg)</li>
-									<li className="title-point-graph kCal">
-										Calories brûlées (kCal)
-									</li>
-								</ul>
-							</div>
-							{elementActivity && <GraphBar data={elementActivity} />}
+
+		<div className="container">
+			<div className="user-info">
+				<h1>
+					<span className="bonjour">Bonjour</span>
+					<span className="user-name">
+						{" "}
+						{element && element.userInfos.firstName}
+					</span>
+				</h1>
+				<p className="profil-text">
+					Félicitation ! Vous avez explosé vos objectifs hier 👏
+				</p>
+			</div>
+			<div className="grid-container">
+				<div className="graph-bar-other">
+					<div className="graph-bar-container">
+						<div className="txt-graph">
+							<p className="title-graph-bar">Activité quotidienne</p>
+							<ul className="title-graph-container">
+								<li className="title-point-graph kg">Poids (kg)</li>
+								<li className="title-point-graph kCal">
+									Calories brûlées (kCal)
+								</li>
+							</ul>
 						</div>
-						<div className="other-graph">
-							<div className="graph-line">
-								<p className="title-line">Durée moyenne des sessions</p>
-								{elementAverageSessions && <GraphLine data={elementAverageSessions} />}
-							</div>
-							<div className="graph-multi">
-								{elementPerformance && <GraphRadar data={elementPerformance} />}
-							</div>
-							<div className="graph-circle">
-								<p className="title-pie">Score</p>
-								<span className="pie">
-									{element && <GraphPie data={element} />}
-								</span>
-							</div>
+						{elementActivity && <GraphBar data={elementActivity} />}
+					</div>
+					<div className="other-graph">
+						<div className="graph-line">
+							<p className="title-line">Durée moyenne des sessions</p>
+							{elementAverageSessions && (
+								<GraphLine data={elementAverageSessions} />
+							)}
+						</div>
+						<div className="graph-multi">
+							{elementPerformance && <GraphRadar data={elementPerformance} />}
+						</div>
+						<div className="graph-circle">
+							<p className="title-pie">Score</p>
+							<span className="pie">
+								{element && <GraphPie data={element} />}
+							</span>
 						</div>
 					</div>
-					<div className="right-infos">
-						<div className="calories">
-							<img src={calories} alt="" className="icon" />
-							<div className="container-info">
-								<p className="calDyn">{element && element.keyData.calorieCount}kCal</p>
-								<p className="calFix">Calories</p>
-							</div>
+				</div>
+				<div className="right-infos">
+					<div className="calories">
+						<img src={calories} alt="" className="icon" />
+						<div className="container-info">
+							<p className="calDyn">
+								{element && element.keyData.calorieCount}kCal
+							</p>
+							<p className="calFix">Calories</p>
 						</div>
-						<div className="proteines">
-							<img src={proteines} alt="" className="icon" />
-							<div className="container-info">
-								<p className="calDyn">{element && element.keyData.proteinCount}g</p>
-								<p className="calFix">Proteines</p>
-							</div>
+					</div>
+					<div className="proteines">
+						<img src={proteines} alt="" className="icon" />
+						<div className="container-info">
+							<p className="calDyn">
+								{element && element.keyData.proteinCount}g
+							</p>
+							<p className="calFix">Proteines</p>
 						</div>
-						<div className="glucides">
-							<img src={glucides} alt="" className="icon" />
-							<div className="container-info">
-								<p className="calDyn">{element && element.keyData.carbohydrateCount}g</p>
-								<p className="calFix">Glucides</p>
-							</div>
+					</div>
+					<div className="glucides">
+						<img src={glucides} alt="" className="icon" />
+						<div className="container-info">
+							<p className="calDyn">
+								{element && element.keyData.carbohydrateCount}g
+							</p>
+							<p className="calFix">Glucides</p>
 						</div>
-						<div className="lipides">
-							<img src={lipides} alt="" className="icon" />
-							<div className="container-info">
-								<p className="calDyn">{element && element.keyData.lipidCount}g</p>
-								<p className="calFix">Lipides</p>
-							</div>
+					</div>
+					<div className="lipides">
+						<img src={lipides} alt="" className="icon" />
+						<div className="container-info">
+							<p className="calDyn">{element && element.keyData.lipidCount}g</p>
+							<p className="calFix">Lipides</p>
 						</div>
 					</div>
 				</div>
 			</div>
-		)
+		</div>
 	);
 }
