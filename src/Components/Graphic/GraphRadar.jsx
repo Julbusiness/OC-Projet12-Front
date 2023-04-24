@@ -7,7 +7,7 @@ import {
 	PolarRadiusAxis,
 	ResponsiveContainer,
 } from "recharts";
-import PropTypes from "prop-types";
+import PropTypes, { object } from "prop-types";
 import { Model } from "../Model/Model";
 
 /**
@@ -23,9 +23,10 @@ export default function GraphRadar(data) {
 
 	dataGraphReverse.forEach((element, index) => {
 		let userModel = new Model(element);
+		const kindFr = userModel.GraphRadarModel(element).trad
 
 		dataGraphBar.push({
-			subject: Object.values(kind).reverse()[index++],
+			subject: Object.values(kindFr).reverse()[index++],
 			perf: userModel.GraphRadarModel(element).value,
 		});
 	});

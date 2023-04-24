@@ -1,18 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-const ENV = import.meta.env.VITE_API;
-
-if(ENV === 'http://localhost:3000'){
-	console.log(ENV + ' API')
-} else {
-	console.log(ENV + ' APIMOCK')
-}
-
-// import { Api } from "../../Components/Api/Api"
-// import { Request } from "../../Components/Api/Api"
-import { Api } from "../../Components/Api/ApiMock";
-import { Request } from "../../Components/Api/ApiMock";
+import { Api } from "../../Components/Api/Api"
+import { Request } from "../../Components/Api/Api"
+// import { Api } from "../../Components/Api/ApiMock";
+// import { Request } from "../../Components/Api/ApiMock";
 
 import GraphBar from "../../Components/Graphic/GraphBar";
 import GraphRadar from "../../Components/Graphic/GraphRadar";
@@ -35,6 +27,7 @@ export default function Profil() {
 	const [dataPerformance, setDataPerformance] = useState([]);
 	const [dataAverageSessions, setDataAverageSessions] = useState([]);
 	const { userId } = useParams();
+	const navigate = useNavigate()
 
 	let user_api = new Api(userId);
 	let request = new Request();
@@ -42,7 +35,11 @@ export default function Profil() {
 	useEffect(() => {
 		async function getApiLoad() {
 			const data = await request.currentURL(user_api.getApi(parseInt(userId)));
-			setData(data);
+			if(data !== undefined) {
+				setData(data);
+			} else {
+				navigate("404")
+			}
 		}
 		getApiLoad();
 

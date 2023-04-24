@@ -66,10 +66,19 @@ export class Model {
 	GraphRadarModel(data) {
 		const subject = data.kind;
 		const value = data.value;
+		const trad = [
+      'cardio',
+      'energie',
+      'endurance',
+      'force',
+      'vitesse',
+      'intensité',
+		]
 
 		return {
 			subject,
 			value,
+			trad,
 		};
 	}
 }
